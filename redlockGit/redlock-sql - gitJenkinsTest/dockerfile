@@ -1,0 +1,13 @@
+# SQL's image
+FROM mysql:latest
+
+# Set username and password
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=pass
+ENV MYSQL_DATABASE=Redlock
+
+# Copy the database
+COPY redlock-db.sql /docker-entrypoint-initdb.d/redlock-db.sql
+
+

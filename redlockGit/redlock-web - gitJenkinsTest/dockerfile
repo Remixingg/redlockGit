@@ -1,0 +1,20 @@
+# Image : php 8.1.X + Web Server
+FROM php:8.1-apache
+
+# MySQLi packets/libraries/extension
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN apt-get update && apt-get upgrade -y
+
+# Control list for 'u' & 'g' is at www-data
+RUN chown -R www-data:www-data /var/www/html
+
+# Remove 'w' and 'x' for others
+RUN chmod -R o-wx /var/www/html
+
+# Display users in page when opened
+COPY users.php /var/www/html
+
+# Default = port 80 (webpage)
+EXPOSE 80
+
+
