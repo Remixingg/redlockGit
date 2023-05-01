@@ -26,5 +26,16 @@ if ($result->num_rows > 0) {
     echo "There is no users data!";
 }
 
+// Display total amount of users
+$sql2 = "SELECT * FROM users";
+
+if ($result2 = mysqli_query($conn, $sql2) ) {
+    $total = mysqli_num_rows($result2);
+    echo "Total users = %d", $total;
+} else {
+    echo "Total users = 0";
+}
+
+
 $conn->close();
 ?>
